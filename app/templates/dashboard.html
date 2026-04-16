@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block title %}Dashboard | Cattle Care{% endblock %}
+{% block page_title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="row g-3 mb-3">
+    <div class="col-md-6 col-xl-2">
+        <div class="stat-card info">
+            <div class="stat-icon"><i class="fa-solid fa-cow"></i></div>
+            <div>
+                <div class="stat-label">Total Cattle</div>
+                <div class="stat-value" id="totalCattle">{{ summary.total_cattle }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-xl-2">
+        <div class="stat-card success">
+            <div class="stat-icon"><i class="fa-solid fa-link"></i></div>
+            <div>
+                <div class="stat-label">Cow Attached Devices</div>
+                <div class="stat-value" id="attachedDevices">{{ summary.attached_devices }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-xl-2">
+        <div class="stat-card healthy">
+            <div class="stat-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+            <div>
+                <div class="stat-label">Healthy</div>
+                <div class="stat-value" id="healthyCount">{{ summary.healthy }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-xl-2">
+        <div class="stat-card warning">
+            <div class="stat-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <div>
+                <div class="stat-label">Alerts</div>
+                <div class="stat-value" id="alertsCount">{{ summary.alerts }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-xl-2">
+        <div class="stat-card danger">
+            <div class="stat-icon"><i class="fa-solid fa-radiation"></i></div>
+            <div>
+                <div class="stat-label">At Risk</div>
+                <div class="stat-value" id="atRiskCount">{{ summary.at_risk }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-xl-2">
+        <div class="stat-card dark">
+            <div class="stat-icon"><i class="fa-solid fa-clock"></i></div>
+            <div>
+                <div class="stat-label">Last Sync</div>
+                <div class="stat-value small" id="lastSync">{{ summary.last_sync }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-3">
+    <div class="col-lg-8">
+        <div class="panel-card">
+            <div class="panel-header">
+                <h5 class="mb-0">Real-time Temperature Trend</h5>
+                <span class="badge bg-info">Auto-refresh every 30s</span>
+            </div>
+            <canvas id="tempTrendChart" height="120"></canvas>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="panel-card h-100">
+            <div class="panel-header">
+                <h5 class="mb-0">Latest Alerts</h5>
+            </div>
+            <div class="alerts-scroll" id="latestAlerts">
+                {% for a in summary.alerts_list %}
+                <div class="alert-item severity-{{ a.severity|lower }}">
+                    <div class="fw-semibold">{{ a.message }}</div>
+                    <small class="text-muted">Cattle #{{ a.cattle_id }} · {{ a.timestamp }}</small>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // window.dashboardInitial = {{ summary|tojson }};
+    window.dashboardInitial = JSON.parse('{{ summary | tojson | safe }}');
+</script>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

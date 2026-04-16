@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Cattle | Cattle Care{% endblock %}
+{% block page_title %}Cattle Management{% endblock %}
+
+{% block content %}
+<div class="panel-card">
+    <div class="d-flex flex-column flex-md-row justify-content-between gap-2 mb-3">
+        <input type="text" class="form-control w-100 w-md-50" id="searchInput" placeholder="Search cattle by ID, breed, or age...">
+        <a href="{{ url_for('cattle.add_cattle') }}" class="btn btn-primary">
+            <i class="fa-solid fa-plus"></i> Add Cattle
+        </a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover align-middle search-table">
+            <thead>
+                <tr>
+                    <th>Photo</th>
+                    <th>Cattle ID</th>
+                    <th>Breed</th>
+                    <th>Age</th>
+                    <th>Weight</th>
+                    <th>Owner</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in cattle %}
+                <tr>
+                    <td>
+                        <img src="{{ url_for('static', filename=c.photo or 'img/default-cattle.jpg') }}"
+                             class="table-photo">
+                    </td>
+                    <td>{{ c.cattle_tag }}</td>
+                    <td>{{ c.breed }}</td>
+                    <td>{{ c.age }}</td>
+                    <td>{{ c.weight }} kg</td>
+                    <td>{{ c.owner.name }}</td>
+                    <td>
+                        <a href="{{ url_for('cattle.cattle_detail', cattle_id=c.id) }}" class="btn btn-sm btn-info text-white">View</a>
+                        <a href="{{ url_for('cattle.edit_cattle', cattle_id=c.id) }}" class="btn btn-sm btn-warning">Edit</a>
+                        <form method="POST" action="{{ url_for('cattle.delete_cattle', cattle_id=c.id) }}" class="d-inline" onsubmit="return confirm('Delete this cattle?')">
+                            <button class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

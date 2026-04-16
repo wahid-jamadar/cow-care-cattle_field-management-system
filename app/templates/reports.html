@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Reports | Cattle Care{% endblock %}
+{% block page_title %}Reports{% endblock %}
+
+{% block content %}
+<div class="panel-card mb-3">
+    <div class="d-flex flex-wrap gap-2 justify-content-end mb-3">
+        <a href="{{ url_for('reports.export_report', fmt='csv') }}" class="btn btn-outline-primary">
+            <i class="fa-solid fa-file-csv"></i> Export CSV
+        </a>
+        <a href="{{ url_for('reports.export_report', fmt='pdf') }}" class="btn btn-outline-danger">
+            <i class="fa-solid fa-file-pdf"></i> Export PDF
+        </a>
+    </div>
+    <canvas id="reportChart" height="110"></canvas>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// const labels = {{ labels|tojson }};
+// const values = {{ values|tojson }};
+const labels = JSON.parse('{{ labels | tojson | safe }}');
+const values = JSON.parse('{{ values | tojson | safe }}');
+new Chart(document.getElementById('reportChart'), {
+    type: 'bar',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: 'Latest Temperature',
+            data: values
+        }]
+    },
+    options: { responsive: true }
+});
+</script>
+{% endblock %}

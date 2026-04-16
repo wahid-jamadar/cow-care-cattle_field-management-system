@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Notifications | Cattle Care{% endblock %}
+{% block page_title %}Notifications{% endblock %}
+
+{% block content %}
+<div class="panel-card">
+    {% for a in alerts %}
+    <div class="alert-item severity-{{ a.severity|lower }}">
+        <div class="d-flex justify-content-between gap-2">
+            <div>
+                <div class="fw-semibold">{{ a.message }}</div>
+                <small class="text-muted">Cattle #{{ a.cattle_id }} · {{ a.timestamp }}</small>
+            </div>
+            <span class="badge bg-dark">{{ a.severity }}</span>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

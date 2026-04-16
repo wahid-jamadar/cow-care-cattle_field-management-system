@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Milk Yield | Cattle Care{% endblock %}
+{% block page_title %}Milk Yield{% endblock %}
+
+{% block content %}
+<div class="panel-card">
+    <canvas id="milkChart" height="110"></canvas>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// const labels = {{cattle|map(attribute='cattle_tag')|list|tojson|safe}};
+const labels = JSON.parse('{{cattle|map(attribute="cattle_tag")|list|tojson|safe}}');
+const values = labels.map((_, i) => 12 + (i * 1.7) % 8);
+new Chart(document.getElementById('milkChart'), {
+    type: 'line',
+    data: { labels, datasets: [{ label: 'Estimated Milk Yield (L/day)', data: values }] },
+    options: { responsive: true }
+});
+</script>
+{% endblock %}

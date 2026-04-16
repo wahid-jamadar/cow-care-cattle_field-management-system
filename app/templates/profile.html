@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Profile | Cattle Care{% endblock %}
+{% block page_title %}Profile{% endblock %}
+
+{% block content %}
+<div class="panel-card col-lg-7">
+    <h5 class="mb-3">Account Details</h5>
+    <div class="profile-row"><span>Name</span><strong>{{ current_user.name }}</strong></div>
+    <div class="profile-row"><span>Email</span><strong>{{ current_user.email }}</strong></div>
+    <div class="profile-row"><span>Role</span><strong>{{ current_user.role }}</strong></div>
+</div>
+{% endblock %}

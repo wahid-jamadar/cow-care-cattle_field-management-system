@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Vaccination Schedule | Cattle Care{% endblock %}
+{% block page_title %}Vaccination Schedule{% endblock %}
+
+{% block content %}
+<div class="panel-card">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Cattle</th>
+                    <th>Vaccine</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Sample-01</td><td>FMD</td><td>2026-04-20</td><td><span class="badge bg-warning text-dark">Upcoming</span></td></tr>
+                <tr><td>Sample-02</td><td>HS</td><td>2026-04-25</td><td><span class="badge bg-success">Done</span></td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

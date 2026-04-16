@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Contact Vet | Cattle Care{% endblock %}
+{% block page_title %}Contact Vet{% endblock %}
+
+{% block content %}
+<div class="panel-card col-lg-7">
+    {% if sent %}
+    <div class="alert alert-success">Message sent to veterinarian.</div>
+    {% endif %}
+    <form method="POST">
+        <div class="mb-3">
+            <label class="form-label">Subject</label>
+            <input class="form-control" name="subject" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Message</label>
+            <textarea class="form-control" rows="5" name="message" required></textarea>
+        </div>
+        <button class="btn btn-primary">Send</button>
+    </form>
+</div>
+{% endblock %}

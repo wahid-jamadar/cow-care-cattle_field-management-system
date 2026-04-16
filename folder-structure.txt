@@ -1,0 +1,61 @@
+cattle-health-monitoring/
+│
+├── app/
+│   ├── __init__.py
+│   ├── config.py
+│   ├── extensions.py
+│   │
+│   ├── models/
+│   │   ├── __init__.py
+│   │   ├── user.py
+│   │   ├── cattle.py
+│   │   ├── device.py
+│   │   ├── health_data.py
+│   │   └── alert.py
+│   │
+│   ├── routes/
+│   │   ├── auth.py
+│   │   ├── main.py
+│   │   ├── cattle.py
+│   │   ├── devices.py
+│   │   ├── reports.py
+│   │   ├── pages.py
+│   │   └── api.py
+│   │
+│   ├── services/
+│   │   ├── simulator.py
+│   │   ├── alerts.py
+│   │   └── report_service.py
+│   │
+│   ├── templates/
+│   │   ├── base.html
+│   │   ├── login.html
+│   │   ├── register.html
+│   │   ├── dashboard.html
+│   │   ├── cattle.html
+│   │   ├── cattle_form.html
+│   │   ├── cattle_detail.html
+│   │   ├── devices.html
+│   │   ├── reports.html
+│   │   ├── vaccination.html
+│   │   ├── contact_vet.html
+│   │   ├── profile.html
+│   │   ├── notifications.html
+│   │   ├── milk_yield.html
+│   │   └── page.html
+│   │
+│   └── static/
+│       ├── css/
+│       │   └── style.css
+│       ├── js/
+│       │   ├── main.js
+│       │   └── dashboard.js
+│       └── uploads/
+│           └── cattle/
+│
+├── sql/
+│   └── schema.sql
+│
+├── .env.example
+├── requirements.txt
+└── run.py
