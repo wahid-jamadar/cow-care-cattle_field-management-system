@@ -6,6 +6,7 @@ class Cattle(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     cattle_tag = db.Column(db.String(50), unique=True, nullable=False)
+    cattle_name = db.Column(db.String(100), nullable=False)
     breed = db.Column(db.String(100), nullable=False)
     age = db.Column(db.Integer, nullable=False)
     weight = db.Column(db.Numeric(10, 2), nullable=False)
@@ -21,6 +22,7 @@ class Cattle(db.Model):
         return {
             "id": self.id,
             "cattle_tag": self.cattle_tag,
+            "cattle_name": self.cattle_name,
             "breed": self.breed,
             "age": self.age,
             "weight": float(self.weight),

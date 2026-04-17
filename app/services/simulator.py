@@ -6,6 +6,9 @@ from app.models.device import Device
 from app.models.health_data import HealthData
 from app.models.alert import Alert
 from .alerts import get_alert_from_sample
+import pytz
+
+india = pytz.timezone("Asia/Kolkata")
 
 def generate_sample():
     temp = round(random.uniform(37.0, 41.0), 1)
@@ -97,7 +100,8 @@ def dashboard_summary():
         "healthy": healthy,
         "alerts": alerts_count,
         "at_risk": at_risk,
-        "last_sync": datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S"),
+        # "last_sync": datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S"),
+        "last_sync": datetime.now(india).strftime("%Y-%m-%d %H:%M:%S"),
         "trend": [
             {
                 "label": r.timestamp.strftime("%H:%M:%S"),

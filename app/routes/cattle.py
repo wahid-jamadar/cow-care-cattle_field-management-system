@@ -30,6 +30,7 @@ def list_cattle():
 def add_cattle():
     if request.method == "POST":
         cattle_tag = request.form.get("cattle_tag")
+        cattle_name = request.form.get("cattle_name")
         breed = request.form.get("breed")
         age = request.form.get("age")
         weight = request.form.get("weight")
@@ -37,6 +38,7 @@ def add_cattle():
 
         cattle = Cattle(
             cattle_tag=cattle_tag,
+            cattle_name=cattle_name,
             breed=breed,
             age=int(age),
             weight=float(weight),
@@ -67,6 +69,7 @@ def edit_cattle(cattle_id):
 
     if request.method == "POST":
         cattle.cattle_tag = request.form.get("cattle_tag")
+        cattle.cattle_name = request.form.get("cattle_name")
         cattle.breed = request.form.get("breed")
         cattle.age = int(request.form.get("age"))
         cattle.weight = float(request.form.get("weight"))

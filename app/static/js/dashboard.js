@@ -33,6 +33,25 @@ function renderTrendChart(labels, data) {
     });
 }
 
+function formatDateTime12(dateStr) {
+    const date = new Date(dateStr);
+
+    const fullDate = date.toLocaleDateString('en-IN', {
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric'
+    });
+
+    const fullTime = date.toLocaleTimeString('en-IN', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+    });
+
+    return `${fullDate}<br>${fullTime}`;
+}
+
 async function refreshDashboard() {
     try {
         await fetch("/api/health-data/simulate", { method: "POST" });
@@ -45,7 +64,7 @@ async function refreshDashboard() {
         document.getElementById("healthyCount").textContent = data.healthy;
         document.getElementById("alertsCount").textContent = data.alerts;
         document.getElementById("atRiskCount").textContent = data.at_risk;
-        document.getElementById("lastSync").textContent = data.last_sync;
+        document.getElementById("lastSync").innerHTML = formatDateTime12(data.last_sync);
 
         const labels = data.trend.map(x => x.label);
         const temps = data.trend.map(x => x.temp);

@@ -11,6 +11,10 @@
                 <input type="text" name="cattle_tag" class="form-control" value="{{ cattle.cattle_tag if cattle else '' }}" required>
             </div>
             <div class="col-md-6">
+                <label class="form-label">Cattle Name</label>
+                <input type="text" name="cattle_name" class="form-control" value="{{ cattle.cattle_name if cattle else '' }}" required>
+            </div>
+            <div class="col-md-6">
                 <label class="form-label">Breed</label>
                 <input type="text" name="breed" class="form-control" value="{{ cattle.breed if cattle else '' }}" required>
             </div>

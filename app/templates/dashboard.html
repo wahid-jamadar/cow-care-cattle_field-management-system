@@ -3,8 +3,8 @@
 {% block page_title %}Dashboard{% endblock %}
 
 {% block content %}
-<div class="row g-3 mb-3">
-    <div class="col-md-6 col-xl-2">
+<div class="row g-3 mb-4 stats-row">
+    <div class="col-md-6 col-lg-4 col-xl-2">
         <div class="stat-card info">
             <div class="stat-icon"><i class="fa-solid fa-cow"></i></div>
             <div>
@@ -13,7 +13,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-xl-2">
+    <div class="col-md-6 col-lg-4 col-xl-2">
         <div class="stat-card success">
             <div class="stat-icon"><i class="fa-solid fa-link"></i></div>
             <div>
@@ -22,7 +22,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-xl-2">
+    <div class="col-md-6 col-lg-4 col-xl-2">
         <div class="stat-card healthy">
             <div class="stat-icon"><i class="fa-solid fa-heart-pulse"></i></div>
             <div>
@@ -31,7 +31,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-xl-2">
+    <div class="col-md-6 col-lg-4 col-xl-2">
         <div class="stat-card warning">
             <div class="stat-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
             <div>
@@ -40,7 +40,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-xl-2">
+    <div class="col-md-6 col-lg-4 col-xl-2">
         <div class="stat-card danger">
             <div class="stat-icon"><i class="fa-solid fa-radiation"></i></div>
             <div>
@@ -49,15 +49,19 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-xl-2">
-        <div class="stat-card dark">
-            <div class="stat-icon"><i class="fa-solid fa-clock"></i></div>
-            <div>
-                <div class="stat-label">Last Sync</div>
-                <div class="stat-value small" id="lastSync">{{ summary.last_sync }}</div>
-            </div>
+    <div class="col-md-6 col-lg-4 col-xl-2">
+    <div class="sync-card">
+        <!-- <div class="sync-left">
+            <i class="fa-solid fa-clock"></i>
+        </div> -->
+
+        <div class="sync-right">
+            <div class="sync-label">Last Sync</div>
+            <div class="sync-time" id="lastSync">Loading...</div>
+            <small class="text-muted">Auto Updated</small>
         </div>
     </div>
+</div>
 </div>
 
 <div class="row g-3">
