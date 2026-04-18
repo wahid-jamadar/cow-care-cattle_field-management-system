@@ -2,6 +2,7 @@ import os
 from flask import Flask
 from .config import Config
 from .extensions import db, login_manager, bcrypt
+from .routes.hardware import bp as hardware_bp
 
 def create_app():
     app = Flask(__name__)
@@ -30,6 +31,7 @@ def create_app():
     app.register_blueprint(reports_bp)
     app.register_blueprint(pages_bp)
     app.register_blueprint(api_bp)
+    app.register_blueprint(hardware_bp)
 
     from .models.user import User
     from .models.cattle import Cattle

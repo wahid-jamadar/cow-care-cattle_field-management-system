@@ -221,7 +221,6 @@ cattle-health-monitoring/
 * status
 
 ### health_data
-
 * id
 * cattle_id
 * temp
@@ -231,7 +230,6 @@ cattle-health-monitoring/
 * timestamp
 
 ### alerts
-
 * id
 * cattle_id
 * device_id
@@ -261,7 +259,7 @@ cattle-health-monitoring/
 
 * Latest Alerts
 * Notification Center
-* Sync Status
+* Data Sync Status
 
 ---
 
@@ -372,14 +370,11 @@ http://127.0.0.1:5000
 
 # 📈 Future Enhancements
 
-* AI Disease Prediction
+* AI-Based Disease Prediction
 * SMS Alerts
-* WhatsApp Notifications
 * MQTT Live Sensor Feed
 * GPS Tracking
 * Milk Yield Prediction
-* Vaccination Reminder AI
-* Android Mobile App
 
 ---
 
@@ -405,11 +400,9 @@ This project is licensed under the **MIT License**.
 
 # 👨‍💻 Author
 
-### AJ (Software Developer & AI Enthusiast)
-
+### Wahid Jamadar (Software Developer & AI Enthusiast)
 * Full Stack Developer
 * Python & Flask Developer
-* IoT + AI Projects Builder
 
 ---
 
