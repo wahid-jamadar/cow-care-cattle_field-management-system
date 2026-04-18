@@ -301,3 +301,25 @@ body{
         white-space: normal;
     }
 }
+
+.device-card{
+background:#fff;
+padding:22px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+height:100%;
+transition:.3s;
+}
+
+.device-card:hover{
+transform:translateY(-5px);
+}
+
+.device-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:15px;
+font-size:22px;
+color:#2563eb;
+}

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block page_title %}Add Device{% endblock %}
+
+{% block content %}
+
+<div class="panel-card col-lg-7 mx-auto">
+
+<form method="POST">
+
+<div class="row g-3">
+
+<div class="col-md-6">
+    <label>Device ID</label>
+    <input type="text" name="device_id" class="form-control" required>
+</div>
+
+<div class="col-md-6">
+    <label>Device Serial No</label>
+    <input type="text" name="device_serial" class="form-control" required>
+</div>
+
+<div class="col-md-12">
+    <label>Device Name</label>
+    <input type="text" name="device_name" class="form-control" required>
+</div>
+
+<div class="col-md-12">
+    <label>Device Details</label>
+    <textarea name="device_details" class="form-control"></textarea>
+</div>
+
+<div class="col-md-12">
+    <label>Select Cow</label>
+
+<select name="cattle_id" class="form-select" required>
+    <option value="">Select Cattle to Assign Device</option>
+
+    {% for c in cattle %}
+    <option value="{{ c.id }}">
+        {{ c.cattle_tag }} | {{ c.cattle_name }} | {{ c.breed }}
+    </option>
+    {% endfor %}
+</select>
+
+</div>
+
+<div class="col-12">
+    <button class="btn btn-primary">Save Device</button>
+</div>
+
+</div>
+
+</form>
+
+</div>
+
+{% endblock %}
