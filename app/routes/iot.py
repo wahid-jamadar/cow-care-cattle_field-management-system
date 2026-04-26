@@ -64,3 +64,37 @@ def send_data():
         "success": True,
         "message": "Data Stored"
     })
+
+@bp.route("/store-data", methods=["POST"])
+def store_data():
+    data = request.get_json()
+
+    device_id = data.get("device_id")
+    temperature = data.get("temperature")
+    heart_rate = data.get("heart_rate")
+    spo2 = data.get("spo2")
+    motion_x = data.get("motion_x")
+    motion_y = data.get("motion_y")
+    motion_z = data.get("motion_z")
+
+    if not device_id or not all([temperature, heart_rate, spo2, motion_x, motion_y, motion_z]):
+        return jsonify({"error": "Missing required fields"}), 400
+
+    # Insert data into the iot_device_data table
+    query = """
+        INSERT INTO iot_device_data (device_id, temperature, heart_rate, spo2, motion_x, motion_y, motion_z)
+        VALUES (:device_id, :temperature, :heart_rate, :spo2, :motion_x, :motion_y, :motion_z)
+    """
+
+    db.session.execute(query, {
+        "device_id": device_id,
+        "temperature": temperature,
+        "heart_rate": heart_rate,
+        "spo2": spo2,
+        "motion_x": motion_x,
+        "motion_y": motion_y,
+        "motion_z": motion_z
+    })
+    db.session.commit()
+
+    return jsonify({"success": True, "message": "Data stored successfully"})

@@ -53,3 +53,16 @@ CREATE TABLE IF NOT EXISTS alerts (
     FOREIGN KEY (cattle_id) REFERENCES cattle(id) ON DELETE CASCADE,
     FOREIGN KEY (device_id) REFERENCES devices(id) ON DELETE SET NULL
 );
+
+CREATE TABLE IF NOT EXISTS iot_device_data (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    device_id VARCHAR(100) NOT NULL,
+    temperature DECIMAL(4,1) NOT NULL,
+    heart_rate INT NOT NULL,
+    spo2 INT NOT NULL,
+    motion_x DECIMAL(5,2) NOT NULL,
+    motion_y DECIMAL(5,2) NOT NULL,
+    motion_z DECIMAL(5,2) NOT NULL,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (device_id) REFERENCES devices(device_id) ON DELETE CASCADE
+);
